@@ -14,8 +14,8 @@
     
     // Header Scrolled
     const header = document.querySelector('#header');
-    if (header && (header.classList.contains('scroll-up-sticky') || 
-    header.classList.contains('sticky-top') || 
+    if (header && (header.classList.contains('scroll-up-sticky') ||
+    header.classList.contains('sticky-top') ||
     header.classList.contains('fixed-top'))) {
       document.body.classList.toggle('scrolled', scrollY > 100);
     }
@@ -65,7 +65,7 @@
     
     // Dropdown Mobile Menu
     document.querySelectorAll('.navmenu .toggle-dropdown').forEach(dropdown => {
-      dropdown.addEventListener('click', function(e) {
+      dropdown.addEventListener('click', function (e) {
         e.preventDefault();
         this.parentNode?.classList.toggle('active');
         this.parentNode?.nextElementSibling?.classList.toggle('dropdown-active');
@@ -88,6 +88,9 @@
     // --- Skill Bars Avanzate ---
     initSkillBars();
     
+    // --- Gestione Form Web3Forms ---
+    initWeb3Forms();
+    
     // --- Inizializzazione Librerie Esterne ---
     initAOS();
     initPureCounter();
@@ -109,7 +112,7 @@
       // 1. Anima l'espansione della barra
       progressBar.style.width = `${targetVal}%`;
       
-      // 2. Anima il conteggio del testo (cerca elementi tipo <span class="val">0%</span>)
+      // 2. Anima il conteggio del testo
       const parentItem = progressBar.closest('.skill-item, .progress-item, li, div');
       const valLabel = parentItem?.querySelector('.val, .percentage, .value');
       
@@ -149,7 +152,66 @@
   }
   
   // -------------------------------------------------------------------
-  // 4. Helper Librerie Esterne (Safe Load)
+  // 4. Gestione Invio Modulo Web3Forms (Fix errore box rosso)
+  // -------------------------------------------------------------------
+  function initWeb3Forms() {
+    const forms = document.querySelectorAll('form[action*="web3forms.com"]');
+    forms.forEach(form => {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const loading = form.querySelector('.loading');
+        const errorMessage = form.querySelector('.error-message');
+        const sentMessage = form.querySelector('.sent-message');
+        
+        if (loading) loading.style.display = 'block';
+        if (errorMessage) {
+          errorMessage.style.display = 'none';
+          errorMessage.textContent = '';
+        }
+        if (sentMessage) {
+          sentMessage.style.display = 'none';
+          sentMessage.textContent = '';
+        }
+        
+        const formData = new FormData(form);
+        
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData
+          });
+          
+          const data = await response.json();
+          
+          if (loading) loading.style.display = 'none';
+          
+          if (data.success) {
+            if (sentMessage) {
+              sentMessage.style.display = 'block';
+              sentMessage.textContent = 'Messaggio inviato con successo!';
+            } else {
+              alert('Messaggio inviato con successo!');
+            }
+            form.reset();
+          } else {
+            throw new Error(data.message || 'Errore durante l\'invio del messaggio.');
+          }
+        } catch (error) {
+          if (loading) loading.style.display = 'none';
+          if (errorMessage) {
+            errorMessage.style.display = 'block';
+            errorMessage.textContent = error.message || 'Si è verificato un errore.';
+          } else {
+            alert('Errore: ' + error.message);
+          }
+        }
+      });
+    });
+  }
+  
+  // -------------------------------------------------------------------
+  // 5. Helper Librerie Esterne (Safe Load)
   // -------------------------------------------------------------------
   function initAOS() {
     if (typeof AOS !== 'undefined') {
@@ -205,7 +267,7 @@
       });
       
       isotopeItem.querySelectorAll('.isotope-filters li').forEach(btn => {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', function () {
           isotopeItem.querySelector('.isotope-filters .filter-active')?.classList.remove('filter-active');
           this.classList.add('filter-active');
           iso?.arrange({ filter: this.getAttribute('data-filter') });
@@ -214,38 +276,39 @@
       });
     });
   }
-  function filterTalks(category) {
-  // Gestione classe attiva sui bottoni
-  const buttons = document.querySelectorAll('.filter-btn');
-  buttons.forEach(btn => btn.classList.remove('active'));
-  event.target.classList.add('active');
   
-  // Filtraggio elementi della griglia
-  const items = document.querySelectorAll('.talk-item');
-  items.forEach(item => {
-    if (category === 'all' || item.classList.contains(category)) {
-      item.style.display = 'block';
-      item.classList.add('animate__animated', 'animate__fadeIn');
-    } else {
-      item.style.display = 'none';
+  // -------------------------------------------------------------------
+  // 6. Funzioni Globali (Accessibili da eventi HTML onclick / onsubmit)
+  // -------------------------------------------------------------------
+  window.filterTalks = function (category, event) {
+    const buttons = document.querySelectorAll('.filter-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    if (event && event.target) {
+      event.target.classList.add('active');
     }
-  });
-}
-
-function submitTelaioForm(e) {
-      e.preventDefault();
-      const feedback = document.getElementById('feedback-message');
+    
+    const items = document.querySelectorAll('.talk-item');
+    items.forEach(item => {
+      if (category === 'all' || item.classList.contains(category)) {
+        item.style.display = 'block';
+        item.classList.add('animate__animated', 'animate__fadeIn');
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  };
+  
+  window.submitTelaioForm = function (e) {
+    e.preventDefault();
+    const feedback = document.getElementById('feedback-message');
+    if (feedback) {
       feedback.classList.remove('d-none');
-      
-      // Scroll smooth al messaggio
       feedback.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-      // Reset form
-      setTimeout(() => {
-        document.getElementById('form-telaio').reset();
-      }, 1000);
     }
-  
+    
+    setTimeout(() => {
+      document.getElementById('form-telaio')?.reset();
+    }, 1000);
+  };
   
 })();
-

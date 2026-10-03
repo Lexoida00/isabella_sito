@@ -67,105 +67,108 @@
     <main class="main">
 
       <!-- Contact Section -->
-      <section id="contact" class="contact section py-5 mb-5">
+        <section id="contact" class="contact section py-5 mb-5">
 
-        <!-- Section Title -->
-        <div class="container section-title text-center mb-5" data-aos="fade-up">
-          <h2 class="text-uppercase fw-bold">Contattami</h2>
-          <p>Hai un progetto in mente, desideri commissionare un dipinto su misura o proporre una collaborazione? Compila il modulo sottostante o contattami direttamente.</p>
-        </div><!-- End Section Title -->
+          <!-- Section Title -->
+          <div class="container section-title text-center mb-5" data-aos="fade-up">
+            <h2 class="text-uppercase fw-bold">Contattami</h2>
+            <p>Hai un progetto in mente, desideri commissionare un dipinto su misura o proporre una collaborazione? Compila il modulo sottostante o contattami direttamente.</p>
+          </div><!-- End Section Title -->
 
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
+          <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-          <div class="row gy-4 align-items-stretch">
+            <div class="row gy-4 align-items-stretch">
 
-            <!-- Colonna Sinistra: Informazioni e Mappa -->
-            <div class="col-lg-5">
-              <div class="info-wrap h-100 p-4 bg-white rounded-3 shadow-sm d-flex flex-column justify-content-between">
-                <div>
-                  <div class="info-item d-flex align-items-center mb-4" data-aos="fade-up" data-aos-delay="200">
-                    <i class="bi bi-geo-alt flex-shrink-0 fs-3 text-primary me-3"></i>
-                    <div>
-                      <h3 class="h6 mb-1 fw-bold">Città</h3>
-                      <p class="mb-0 text-muted">Firenze, Italia</p>
-                    </div>
-                  </div><!-- End Info Item -->
+              <!-- Colonna Sinistra: Informazioni e Mappa -->
+              <div class="col-lg-5">
+                <div class="info-wrap h-100 p-4 bg-white rounded-3 shadow-sm d-flex flex-column justify-content-between">
+                  <div>
+                    <div class="info-item d-flex align-items-center mb-4" data-aos="fade-up" data-aos-delay="200">
+                      <i class="bi bi-geo-alt flex-shrink-0 fs-3 text-primary me-3"></i>
+                      <div>
+                        <h3 class="h6 mb-1 fw-bold">Città</h3>
+                        <p class="mb-0 text-muted">Firenze, Italia</p>
+                      </div>
+                    </div><!-- End Info Item -->
 
-                  <div class="info-item d-flex align-items-center mb-4" data-aos="fade-up" data-aos-delay="400">
-                    <i class="bi bi-envelope flex-shrink-0 fs-3 text-primary me-3"></i>
-                    <div>
-                      <h3 class="h6 mb-1 fw-bold">Email</h3>
-                      <p class="mb-0 text-muted">info@isabellamariagisotti.it</p>
-                    </div>
-                  </div><!-- End Info Item -->
-                </div>
+                    <div class="info-item d-flex align-items-center mb-4" data-aos="fade-up" data-aos-delay="400">
+                      <i class="bi bi-envelope flex-shrink-0 fs-3 text-primary me-3"></i>
+                      <div>
+                        <h3 class="h6 mb-1 fw-bold">Email</h3>
+                        <p class="mb-0 text-muted">info@isabellamariagisotti.it</p>
+                      </div>
+                    </div><!-- End Info Item -->
+                  </div>
 
-                <!-- Mappa flessibile per riempire lo spazio verticale -->
-                <div class="map-container flex-grow-1 mt-3" style="min-height: 220px;">
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d92254.83515813735!2d11.187317769968218!3d43.77993077383794!2m3!1f0!1f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132a56a680d2d6ad%3A0x93d57917efc72a03!2sFirenze%20FI!5e0!3m2!1sit!2sit!4v1711000000000!5m2!1sit!2sit" 
-                          style="border:0; width: 100%; height: 100%; min-height: 220px; border-radius: 8px;" 
-                          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                  <!-- Mappa flessibile per riempire lo spazio verticale -->
+                  <div class="map-container flex-grow-1 mt-3" style="min-height: 220px;">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d92254.83515813735!2d11.187317769968218!3d43.77993077383794!2m3!1f0!1f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132a56a680d2d6ad%3A0x93d57917efc72a03!2sFirenze%20FI!5e0!3m2!1sit!2sit!4v1711000000000!5m2!1sit!2sit" 
+                            style="border:0; width: 100%; height: 100%; min-height: 220px; border-radius: 8px;" 
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                  </div>
                 </div>
               </div>
+
+              <!-- Colonna Destra: Modulo di Contatto Web3Forms -->
+              <div class="col-lg-7">
+                <form action="https://api.web3forms.com/submit" method="POST" class="web3forms-form h-100 p-4 bg-white rounded-3 shadow-sm d-flex flex-column justify-content-between" data-aos="fade-up" data-aos-delay="200">
+                  
+                  <!-- Access Key di Web3Forms -->
+                  <input type="hidden" name="access_key" value="30a2b01b-604d-401e-99e1-e6954d96da6b">
+                  
+                  <!-- Oggetto dell'email che ti arriverà -->
+                  <input type="hidden" name="subject" value="Nuovo messaggio dal sito Studio Aretè">
+
+                  <!-- Protezione Anti-Spam (Honeypot) -->
+                  <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                  <div class="row gy-3">
+
+                    <div class="col-md-6">
+                      <label for="name-field" class="form-label small fw-semibold">Il tuo Nome</label>
+                      <input type="text" name="name" id="name-field" class="form-control" required="">
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="email-field" class="form-label small fw-semibold">La tua Email</label>
+                      <input type="email" class="form-control" name="email" id="email-field" required="">
+                    </div>
+
+                    <div class="col-md-12">
+                      <label for="request-type" class="form-label small fw-semibold">Tipo di richiesta</label>
+                      <select name="subject_option" id="request-type" class="form-select" required="">
+                        <option value="" disabled selected>Seleziona un'opzione...</option>
+                        <option value="Richiesta dipinto su commissione">Richiesta dipinto su commissione</option>
+                        <option value="Proposta di collaborazione">Proposta di collaborazione</option>
+                        <option value="Informazioni e disponibilità opere">Informazioni e disponibilità opere</option>
+                        <option value="Conferenza">Conferenza</option>
+                        <option value="Workshop">Workshop</option>
+                        <option value="Altro">Altro</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-12">
+                      <label for="message-field" class="form-label small fw-semibold">Messaggio</label>
+                      <textarea class="form-control" name="message" rows="5" id="message-field" placeholder="Descrivi la tua idea (es. soggetti preferiti o dettagli sulla collaborazione)..." required=""></textarea>
+                    </div>
+
+                    <div class="col-md-12 text-center pt-2">
+                      <div class="loading" style="display: none;">Invio in corso...</div>
+                      <div class="error-message text-danger mb-2" style="display: none;"></div>
+                      <div class="sent-message text-success mb-2" style="display: none;">Il tuo messaggio è stato inviato! Ti risponderò al più presto.</div>
+
+                      <button type="submit" class="btn btn-primary rounded-pill px-4 py-2">Invia Messaggio</button>
+                    </div>
+
+                  </div>
+                </form>
+              </div><!-- End Contact Form -->
+
             </div>
-
-            <!-- Colonna Destra: Modulo di Contatto (Strada 2 - Web3Forms) -->
-            <div class="col-lg-7">
-              <form action="https://api.web3forms.com/submit" method="POST" class="php-email-form h-100 p-4 bg-white rounded-3 shadow-sm d-flex flex-column justify-content-between" data-aos="fade-up" data-aos-delay="200">
-                
-                <!-- Access Key di Web3Forms -->
-                <input type="hidden" name="access_key" value="30a2b01b-604d-401e-99e1-e6954d96da6b">
-                
-                <!-- Oggetto dell'email che ti arriverà -->
-                <input type="hidden" name="subject" value="Nuovo messaggio dal sito Studio Aretè">
-
-                <div class="row gy-3">
-
-                  <div class="col-md-6">
-                    <label for="name-field" class="form-label small fw-semibold">Il tuo Nome</label>
-                    <input type="text" name="name" id="name-field" class="form-control" required="">
-                  </div>
-
-                  <div class="col-md-6">
-                    <label for="email-field" class="form-label small fw-semibold">La tua Email</label>
-                    <input type="email" class="form-control" name="email" id="email-field" required="">
-                  </div>
-
-                  <div class="col-md-12">
-                    <label for="request-type" class="form-label small fw-semibold">Tipo di richiesta</label>
-                    <select name="subject_option" id="request-type" class="form-select" required="">
-                      <option value="" disabled selected>Seleziona un'opzione...</option>
-                      <option value="Richiesta dipinto su commissione">Richiesta dipinto su commissione</option>
-                      <option value="Proposta di collaborazione">Proposta di collaborazione</option>
-                      <option value="Informazioni e disponibilità opere">Informazioni e disponibilità opere</option>
-                      <option value="conferenza">Conferenza</option>
-                      <option value="workshop">Workshop</option>
-                      <option value="Altro">Altro</option>
-                    </select>
-                  </div>
-
-                  <div class="col-md-12">
-                    <label for="message-field" class="form-label small fw-semibold">Messaggio</label>
-                    <textarea class="form-control" name="message" rows="5" id="message-field" placeholder="Descrivi la tua idea (es. soggetti preferiti o dettagli sulla collaborazione)..." required=""></textarea>
-                  </div>
-
-                  <div class="col-md-12 text-center pt-2">
-                    <div class="loading">Invio in corso...</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Il tuo messaggio è stato inviato! Ti risponderò al più presto.</div>
-
-                    <button type="submit" class="btn btn-primary rounded-pill px-4 py-2">Invia Messaggio</button>
-                  </div>
-
-                </div>
-              </form>
-            </div><!-- End Contact Form -->
 
           </div>
 
-        </div>
-
-      </section><!-- /Contact Section -->
+        </section><!-- /Contact Section -->
     </main>
 
  <footer id="footer" class="footer">
